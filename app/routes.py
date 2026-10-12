@@ -1,5 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from app.schemas import EmployeeCreate
+from app.database import SessionLocal
+from app.models import Employee
 
 router = APIRouter(prefix="/employees", tags=["employees"])
 
@@ -12,5 +14,5 @@ def create_employee(employee: EmployeeCreate):
 
 @router.get("/")
 def list_employees():
-    # TODO: Read employee records from PostgreSQL.
-    raise HTTPException(status_code=501, detail="Not implemented")
+    with SessionLocal() as db:
+        return db.query(Employee).all()

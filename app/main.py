@@ -8,4 +8,4 @@ app.include_router(router)
 @app.get("/health")
 def health():
     # TODO: Return a useful health response.
-    return {"status": "TODO"}
+    return {"status": "healthy"}

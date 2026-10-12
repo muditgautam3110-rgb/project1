@@ -5,6 +5,11 @@ services:
     build: .
     ports:
       - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://employee_user:change_me@db:5432/employee_db
+    depends_on:
+      db:
+        condition: service_healthy    
 
   db:
     image: postgres:17
@@ -12,6 +17,16 @@ services:
       POSTGRES_DB: employee_db
       POSTGRES_USER: employee_user
       POSTGRES_PASSWORD: change_me
+    volumes:
+      - employee_db_data:/var/lib/postgresql/data
+    health check:
+      test: ["CMD-SHELL", "pg_isready -U employee_user -d employee_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    
     # TODO: Add a persistent volume and health check.
 
 # TODO: Declare the named volume.
+volumes:
+  employee_db_data: 
