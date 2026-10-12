@@ -1,0 +1,17 @@
+services:
+  api:
+    # TODO: Build the API image, publish the API port, configure DB URL,
+    # and wait for the database health check.
+    build: .
+    ports:
+      - "8000:8000"
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: employee_db
+      POSTGRES_USER: employee_user
+      POSTGRES_PASSWORD: change_me
+    # TODO: Add a persistent volume and health check.
+
+# TODO: Declare the named volume.

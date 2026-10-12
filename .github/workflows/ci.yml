@@ -1,0 +1,17 @@
+name: Employee API CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: Checkout code
+      # TODO: Set up Python 3.12
+      # TODO: Install requirements
+      # TODO: Run pytest
+      # TODO: Build Docker image
+      - name: Placeholder
+        run: echo "Complete this workflow"
