@@ -7,5 +7,4 @@ app.include_router(router)
 
 @app.get("/health")
 def health():
-    # TODO: Return a useful health response.
-    return {"status": "healthy"}
+    return {"status": "healthy", "service": "Employee Management API"}

@@ -3,7 +3,6 @@ from app.database import Base
 
 
 class Employee(Base):
-    # TODO: Define the table name and required columns/constraints.
     __tablename__ = "employees"
 
     id = Column(Integer, primary_key=True, index=True)

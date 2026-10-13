@@ -7,7 +7,7 @@ client = TestClient(app)
 def test_health_endpoint_exists():
     response = client.get("/health")
     assert response.status_code == 200
-    assert response.json() == {"status": "healthy"}  # TODO: Assert the expected response body.
+    assert response.json() == {"status": "healthy", "service": "Employee Management API"}
 
 def test_create_employee_rejects_invalid_salary():
     response = client.post(
